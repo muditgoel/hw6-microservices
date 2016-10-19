@@ -6,4 +6,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 public interface ItemRepository extends PagingAndSortingRepository<Item, String> {
 
     Iterable<Item> findByCategory(String category);
+    
+	Iterable<Item> findItemById(Long id);
 }

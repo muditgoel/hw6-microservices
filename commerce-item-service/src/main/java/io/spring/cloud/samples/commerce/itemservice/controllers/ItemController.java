@@ -27,4 +27,13 @@ public class ItemController {
     Iterable<Item> items = repository.findByCategory(category);
     return items;
   }
+  
+  @RequestMapping("/item/{itemid}")
+  public Iterable<Item> itemsByID(@PathVariable("itemid") String id) {
+	  System.out.println(id);
+	  Long forthis = Long.parseLong(id);
+    Iterable<Item> items = repository.findItemById(forthis);
+    return items;
+  }
+
 }
