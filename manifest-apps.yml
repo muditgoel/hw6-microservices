@@ -1,0 +1,26 @@
+---
+memory: 800M
+instances: 1
+buildpack: java_buildpack_offline
+env:
+  CF_TARGET: https://api.run.haas-76.pez.pivotal.io
+applications:
+- name: commerce-price-service
+  host: commerce-price-cc
+  path: commerce-price-service/target/commerce-price-service-0.0.1-SNAPSHOT.jar
+  services:
+  - commerce-config-cc3
+  - commerce-eureka-cc
+- name: commerce-item-service
+  host: commerce-item-cc
+  path: commerce-item-service/target/commerce-item-service-0.0.1-SNAPSHOT.jar
+  services:
+  - commerce-config-cc3
+  - commerce-eureka-cc
+- name: commerce-ui
+  host: commerce-ui-cc
+  path: commerce-ui/target/commerce-ui-0.0.1-SNAPSHOT.jar
+  services:
+  - commerce-config-cc3
+  - commerce-eureka-cc
+  - commerce-hystrix-cc
